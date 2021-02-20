@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Header } from './features/Header';
+import { SubredditList} from './features/subredditlist/SubredditList';
+import { SearchBar } from './features/SearchBar';
+import { NewsFeed } from './features/newsfeed/NewsFeed';
+
 
 function App() {
+
+  const fetchReddit = async () => {
+    const response = await fetch('https://www.reddit.com/r/space/comments/lnmo9p/perseverance_hazard_camera_photos_with_covers/.json');
+    const responseJSON = await response.json();
+    console.log(responseJSON[1].data.children[4].data.body);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <Header />
       </header>
+      <main className='main'>
+        <SubredditList />
+        <SearchBar />
+        <NewsFeed />
+      </main>
     </div>
   );
 }
