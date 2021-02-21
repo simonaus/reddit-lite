@@ -1,6 +1,7 @@
 import React from 'react';
+import './SubredditTitle.css';
 
 export const SubredditTitle = () => {
 
-  return <h2>Subreddit Title</h2>
+  return <p className="SubredditTitle">Subreddit Title</p>
 }

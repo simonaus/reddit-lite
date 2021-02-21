@@ -7,8 +7,15 @@ export const NewsFeed = () => {
 
   return(
     <div className = "NewsFeed">
-      <h2>Reddit Homepage</h2>
+      <h1>Reddit Homepage</h1>
       <SearchBar className="SearchBar" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
+      <PostTitle className="PostTitle" />
       <PostTitle className="PostTitle" />
       <PostTitle className="PostTitle" />
       <PostTitle className="PostTitle" />

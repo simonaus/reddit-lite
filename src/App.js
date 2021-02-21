@@ -2,8 +2,8 @@ import './App.css';
 import React from 'react';
 import { Header } from './features/Header';
 import { SubredditList} from './features/subredditlist/SubredditList';
-import { SearchBar } from './features/SearchBar';
 import { NewsFeed } from './features/newsfeed/NewsFeed';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 function App() {
@@ -15,15 +15,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header>
-        <Header />
-      </header>
-      <main>
-        <SubredditList className="SubredditList" />
-        <NewsFeed className ='NewsFeed' />
-      </main>
-    </div>
+    <Router>
+      <div className="App">
+        <header>
+          <Header />
+        </header>
+        <main>
+          <SubredditList className="SubredditList" />
+          <Route path='/' exact component={NewsFeed} />
+        </main>
+      </div>
+    </Router>
   );
 }
 
