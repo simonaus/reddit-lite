@@ -1,7 +1,6 @@
 import React from 'react';
 import { PostTitle } from './PostTitle';
 import { SearchBar } from '../SearchBar';
-import './NewsFeed.css';
 
 export const NewsFeed = () => {
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import './PostTitle.css';
 
 export const PostTitle = () => {
 

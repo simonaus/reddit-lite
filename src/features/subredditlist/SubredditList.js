@@ -1,6 +1,5 @@
 import React from 'react';
 import { SubredditTitle } from './SubredditTitle';
-import './SubredditList.css';
 
 export const SubredditList = () => {
 
