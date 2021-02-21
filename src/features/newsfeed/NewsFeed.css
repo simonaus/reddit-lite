@@ -1,0 +1,19 @@
+.NewsFeed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+h2 {
+  text-align: center;
+}
+
+.SearchBar {
+  width: 75%;
+}
+
+.PostTitle {
+  width: 80%;
+  border: solid 1 black;
+
+}

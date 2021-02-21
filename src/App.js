@@ -19,10 +19,9 @@ function App() {
       <header>
         <Header />
       </header>
-      <main className='main'>
-        <SubredditList />
-        <SearchBar />
-        <NewsFeed />
+      <main>
+        <SubredditList className="SubredditList" />
+        <NewsFeed className ='NewsFeed' />
       </main>
     </div>
   );

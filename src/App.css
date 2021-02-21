@@ -1,4 +1,22 @@
 .App {
   display: flex;
+  flex-wrap: wrap;
 }
 
+main {
+  width: 100%;
+  display: flex;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+}
+
+.SubredditList {
+  width: 25%;
+}
+
+.NewsFeed {
+  width: 100%;
+}
