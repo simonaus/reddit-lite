@@ -1,9 +1,10 @@
 import './App.css';
 import React from 'react';
 import { Header } from './features/Header';
-import { SubredditList} from './features/subredditlist/SubredditList';
+import { SubredditList } from './features/subredditlist/SubredditList';
 import { NewsFeed } from './features/newsfeed/NewsFeed';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { SubredditSubcriber } from './features/newsfeed/SubredditSubscriber';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <main>
           <SubredditList className="SubredditList" />
           <Route path='/' exact component={NewsFeed} />
+          <Route path='/' exact component={SubredditSubcriber} />
         </main>
       </div>
     </Router>

@@ -1,3 +1,13 @@
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a {
+  color:black;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .App {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +25,7 @@ header {
 
 .SubredditList {
   width: 25%;
+  background-color: #202020;
 }
 
 .NewsFeed {
@@ -27,9 +38,10 @@ header {
 
 h1 {
   text-align: center;
-  margin-top: 10px;
+  padding-top: 20px;
   margin-bottom: 40px;
   font-size: 2rem;
+
 }
 
 .PostTitle {
@@ -62,11 +74,18 @@ h3 {
 input {
   width: 75%;
   margin-bottom: 20px;
+  font-size: 1.5rem;
 }
 
 .SubredditTitle {
   padding: 20px 0;
-  padding-left: 5%;
+  text-align: center;
+  color: white
+}
+
+.SubredditTitle:hover {
+  background-color: cyan;
+  color: black;
 }
 
 .SubredditList {
@@ -76,9 +95,20 @@ input {
 
 .subredditListTitle {
   margin-top: 30px;
+  padding-bottom: 20px;
   font-size: 1.5rem;
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
+  color: white
+}
+
+.addSubreddit {
+  margin-top: 0px;
+  font-size: 1rem;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  padding-top: 30px;
 }
 
 .Header {
@@ -86,6 +116,7 @@ input {
   justify-content: space-between;
   height: 50px;
   width: 100%;
+  border-bottom: 3px dotted black;
 }
 
 .icon {
@@ -111,12 +142,13 @@ img {
   line-height: 50px;
   margin-left: 20px;
   font-family: 'RocknRoll One', sans-serif;
+  font-size: 1.8rem;
 }
 
 .link {
   margin: 0;
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: right;
-  margin-right: 20px;
+  margin-right: 50px;
   line-height: 50px;
 }
