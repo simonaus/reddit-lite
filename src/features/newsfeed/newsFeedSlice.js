@@ -19,7 +19,10 @@ const options = {
     },
     changePageNumber: (state, action) => {
       state.pageNumber = action.payload;
-    }
+    },
+    changeIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   }
 }
 

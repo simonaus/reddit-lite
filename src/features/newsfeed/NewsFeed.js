@@ -13,6 +13,11 @@ export const NewsFeed = () => {
   //fetch newsfeed data from reddit. get from either homepage or selected subreddit
   const fetchNewsFeed = async (query = '') => {
 
+    dispatch({
+      type: 'newsFeed/changeIsLoading',
+      payload: true,
+    })
+
     let response;
 
     if (state.activeSubreddit === 'Homepage') {
@@ -24,6 +29,8 @@ export const NewsFeed = () => {
 
     const responseJSON = await response.json();
     console.log(responseJSON);
+
+    console.log(state);
 
     // access array of posts
     const posts = responseJSON.data.children;
@@ -51,6 +58,11 @@ export const NewsFeed = () => {
       }
     }
 
+    dispatch({
+      type: 'newsFeed/changeIsLoading',
+      payload: false,
+    })
+
     // dispatch action to reload
     dispatch({
       type: 'newsFeed/loadPosts',
@@ -74,6 +86,9 @@ export const NewsFeed = () => {
   console.log(state.before)
 
   const handleClickAfter = () => {
+    if (state.isLoading) {
+      return;
+    }
     fetchNewsFeed('?after=' + state.after + '&count=' + (state.pageNumber * 25));
     dispatch({
       type: 'newsFeed/changePageNumber',
@@ -82,8 +97,11 @@ export const NewsFeed = () => {
   }
 
   const handleClickBefore = () => {
+    if (state.isLoading) {
+      return;
+    }
 
-      fetchNewsFeed('?before=' + state.before + '&count=' + ((state.pageNumber - 1)  * 25));
+    fetchNewsFeed('?before=' + state.before + '&count=' + ((state.pageNumber - 1)  * 25));
 
     dispatch({
       type: 'newsFeed/changePageNumber',
@@ -106,8 +124,10 @@ export const NewsFeed = () => {
                           title={postTitle.title}
                           subredditName={postTitle.subredditName}
                           image={postTitle.image}
-                          votes={postTitle.votes} />
+                          votes={postTitle.votes}
+                          postTitleClass={(state.isLoading) ? 'hidden' : 'PostTitle'} />
       })}
+      <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
     </div>
   )
 }
