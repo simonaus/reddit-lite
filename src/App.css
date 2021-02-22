@@ -19,16 +19,20 @@ main {
 }
 
 header {
+  position: fixed;
+  background-color: white;
   width: 100%;
   height: 50px;
 }
 
 .SubredditList {
+  margin-top: 50px;
   width: 25%;
   background-color: #202020;
 }
 
 .NewsFeed {
+  margin-top: 50px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,13 +49,38 @@ h1 {
 }
 
 .PostTitle {
-  width: 80%;
-}
-
-.PostTitle {
   border: 1px solid black;
   margin: 10px 0;
-  height: 100px;
+  width: 80%;
+  background-color: #ddd;
+}
+
+.Subreddit {
+  border: 1px solid black;
+  margin: 10px 0;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: #ddd;
+  flex-wrap: wrap;
+}
+
+.subredditDetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.numOfSubscribers {
+  margin-left: 4%
+}
+
+.add {
+  font-size: 3rem;
+  text-align: end;
+  width: 5%;
 }
 
 .subreddit {
@@ -65,10 +94,9 @@ h3 {
 }
 
 .votes {
-  position: relative;
   text-align: right;
   margin-right: 2%;
-  top: 30px;
+
 }
 
 input {
@@ -117,6 +145,7 @@ input {
   height: 50px;
   width: 100%;
   border-bottom: 3px dotted black;
+  position: sticky;
 }
 
 .icon {
@@ -151,4 +180,57 @@ img {
   text-align: right;
   margin-right: 50px;
   line-height: 50px;
+}
+
+.PostDetail {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.PostDetail h1 {
+  width: 80%;
+  text-align: left;
+}
+
+.user {
+  width: 80%;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.body {
+ width: 80%;
+ padding-top: 20px;
+ font-weight: 300;
+ font-size: .9rem;
+}
+
+.Comment {
+  border: 1px solid black;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.commentUser {
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 50%;
+}
+
+.commentVotes {
+  padding-top: 10px;
+  padding-right: 10px;
+  width: 50%;
+  text-align: end;
+}
+
+.commentBody {
+  padding-top: 20px;
+  padding-left: 10px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SearchBar = () => {
+export const SearchBar = ({ placeholder }) => {
 
-  return <input placeholder="Search the below by post title"></input>
+  return <input placeholder={placeholder}></input>
 }

@@ -4,8 +4,8 @@ import { Header } from './features/Header';
 import { SubredditList } from './features/subredditlist/SubredditList';
 import { NewsFeed } from './features/newsfeed/NewsFeed';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { SubredditSubcriber } from './features/newsfeed/SubredditSubscriber';
-
+import { SubredditSubscriber } from './features/newsfeed/SubredditSubscriber';
+import { PostDetail } from './features/postdetail/PostDetail';
 
 function App() {
 
@@ -24,7 +24,8 @@ function App() {
         <main>
           <SubredditList className="SubredditList" />
           <Route path='/' exact component={NewsFeed} />
-          <Route path='/' exact component={SubredditSubcriber} />
+          <Route path='/subredditsubscriber' exact component={SubredditSubscriber} />
+          <Route path='/postdetail' exact component={PostDetail} />
         </main>
       </div>
     </Router>
