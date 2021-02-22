@@ -5,7 +5,7 @@ export const Header = () => {
 
   return (
     <div className='Header'>
-      <input type="image" class="toggleButton" src="iconfinder_magnifying-glass-zoom-in-plus_3643761.png" />
+      <input type="image" className="toggleButton" src="iconfinder_magnifying-glass-zoom-in-plus_3643761.png" />
       <div className='icon'>
         <img src="iconfinder_feather_2561433icon.png" />
         <p className="iconTitle">reddit-lite</p>

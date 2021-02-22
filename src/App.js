@@ -6,6 +6,7 @@ import { NewsFeed } from './features/newsfeed/NewsFeed';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SubredditSubscriber } from './features/newsfeed/SubredditSubscriber';
 import { PostDetail } from './features/postdetail/PostDetail';
+import store from './store';
 
 function App() {
 
@@ -14,6 +15,8 @@ function App() {
     const responseJSON = await response.json();
     console.log(responseJSON[1].data.children[4].data.body);
   }
+
+  console.log(store.getState());
 
   return (
     <Router>
