@@ -16,8 +16,6 @@ function App() {
     console.log(responseJSON[1].data.children[4].data.body);
   }
 
-  console.log(store.getState());
-
   return (
     <Router>
       <div className="App">

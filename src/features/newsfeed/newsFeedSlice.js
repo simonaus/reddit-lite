@@ -1,34 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const options = {
-  name: 'newsfeed',
+  name: 'newsFeed',
   initialState: {
     activeSubreddit: 'Homepage',
     searchTerm: '',
-    posts: {
-      a1: {
-        title: 'Post test a1',
-        subredditName: 'r/worldnews',
-        img: '',
-        votes: 100,
-      },
-      a2: {
-        title: 'Post test a2',
-        subredditName: 'r/worldnews',
-        img: '',
-        votes: 200,
-      },
-      a3: {
-        title: 'Post test a3',
-        subredditName: 'r/askreddit',
-        img: '',
-        votes: 54374,
-      },
-    }
+    posts: {},
+    pageNumber: 1,
+    after: '',
+    before: [],
+    isLoading: false,
   },
   reducers: {
     loadPosts: (state, action) => {
-      state.posts = action.payload;
+      state.posts = action.payload.posts;
+      state.after = action.payload.after;
+      state.before = action.payload.before;
+    },
+    changePageNumber: (state, action) => {
+      state.pageNumber = action.payload;
     }
   }
 }
