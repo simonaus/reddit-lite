@@ -19,7 +19,12 @@ export const NewsFeed = () => {
       payload: true,
     })
 
+    if (!state.isSearching) {
+      query = '/.json' + query
+    }
+
     let response;
+    console.log(state.url +query)
     response = await fetch(state.url + query);
     const responseJSON = await response.json();
 

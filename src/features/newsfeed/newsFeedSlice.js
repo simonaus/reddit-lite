@@ -10,7 +10,8 @@ const options = {
     before: [],
     isLoading: false,
     isSearching: false,
-    url: 'https://www.reddit.com/.json'
+    url: 'https://www.reddit.com',
+    activeSubreddit: '',
   },
   reducers: {
     loadPosts: (state, action) => {
@@ -30,6 +31,9 @@ const options = {
     changeIsSearching: (state, action) => {
       state.isSearching = action.payload;
     },
+    changeActiveSubreddit: (state, action) => {
+      state.activeSubreddit = action.payload;
+    }
   }
 }
 

@@ -4,9 +4,10 @@ const options = {
   name: 'subredditList',
   initialState: {
     subreddits: [
-      {id: 'ad454', name: 'r/worldnews'},
-      {id: 'f55', name: 'r/funny'},
-      {id: 'vfjn899', name: 'r/askreddit'},
+      {urlName: '', displayName: 'Homepage'},
+      {urlName: 'r/worldnews', displayName: 'r/worldnews'},
+      {urlName: 'r/funny', displayName: 'r/funny'},
+      {urlName: 'r/askreddit', displayName: 'r/askreddit'},
     ],
     isToggle: false,
   },

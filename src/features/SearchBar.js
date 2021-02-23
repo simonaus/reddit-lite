@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export const SearchBar = ({ placeholder }) => {
 
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
+  const state = useSelector( state => state.newsFeed)
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -23,7 +24,7 @@ export const SearchBar = ({ placeholder }) => {
 
     dispatch({
       type: 'newsFeed/updateUrl',
-      payload: 'https://www.reddit.com/search/.json?q=' + value,
+      payload: state.url + '/search/.json?restrict_sr=1&q=' + value,
     })
 
     setValue('');
