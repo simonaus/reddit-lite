@@ -38,6 +38,9 @@ const options = {
     toggle: (state, action) => {
       state.isToggle = !state.isToggle;
     },
+    toggleOff: (state, action) => {
+      state.isToggle = false;
+    },
   }
 }
 

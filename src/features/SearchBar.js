@@ -20,6 +20,18 @@ export const SearchBar = ({ placeholder, location }) => {
       return;
     }
 
+    // turn toggle off to avoid window view reset jumping updwards
+    dispatch({
+      type: 'subredditList/toggleOff',
+    });
+    dispatch({
+      type: 'newsFeed/toggleOff',
+    });
+    dispatch({
+      type: 'subredditSubscriber/toggleOff',
+    });
+
+
     dispatch({
       type: 'newsFeed/changeIsSearching',
       payload: true,
