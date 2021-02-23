@@ -14,7 +14,10 @@ const options = {
   reducers: {
     addSubreddit: (state, action) => {
       state.subreddits.push(action.payload);
-    }
+    },
+    removeSubreddit: (state, action) => {
+      state.subreddits = state.subreddits.filter( subreddit => subreddit.urlName !== action.payload);
+    },
   }
 }
 
