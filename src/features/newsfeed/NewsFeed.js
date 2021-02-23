@@ -35,6 +35,8 @@ export const NewsFeed = () => {
     // access array of posts
     const posts = responseJSON.data.children;
 
+    console.log(posts)
+
     // initialise payload for newsFeed/loadPosts action
     const payload = {posts: {}, after: '', before: ''};
 
@@ -43,6 +45,7 @@ export const NewsFeed = () => {
     payload.after = responseJSON.data.after;
 
     console.log('Hello' + payload.before);
+
 
     // interate through array of posts and add to payload object
     for (let post of posts) {
@@ -54,8 +57,13 @@ export const NewsFeed = () => {
         id: post.data.id,
       }
       if (post.data.preview) {
-        payload.posts[post.data.id].image = post.data.preview.images[0].resolutions[post.data.preview.images[0].resolutions.length - 1].url.replaceAll('&amp;', '&');
-      }
+        console.log(post);
+        if (post.data.preview.images[0].resolutions.length === 0) {
+          payload.posts[post.data.id].image = post.data.preview.images[0].source.url.replaceAll('&amp;', '&');
+        } else {
+          payload.posts[post.data.id].image = post.data.preview.images[0].resolutions[post.data.preview.images[0].resolutions.length - 1].url.replaceAll('&amp;', '&');
+        }
+        }
     }
 
     dispatch({
