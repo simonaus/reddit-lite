@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-export const SearchBar = ({ placeholder }) => {
+export const SearchBar = ({ placeholder, location }) => {
 
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-  const state = useSelector( state => state.newsFeed)
+  const state = useSelector( state => state)
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -16,16 +16,26 @@ export const SearchBar = ({ placeholder }) => {
 
     e.preventDefault();
 
-    console.log(value);
     dispatch({
       type: 'newsFeed/changeIsSearching',
       payload: true,
     })
 
-    dispatch({
-      type: 'newsFeed/updateUrl',
-      payload: state.url + '/search/.json?restrict_sr=1&q=' + value,
-    })
+    if (location === 'subredditSubscriber') {
+
+      dispatch({
+        type: 'subredditSubscriber/changeSearchQuery',
+        payload: value,
+      })
+
+    } else {
+
+      dispatch({
+        type: 'newsFeed/updateUrl',
+        payload: state.newsFeed.url + '/search/.json?restrict_sr=1&q=' + value,
+      })
+
+    }
 
     setValue('');
 

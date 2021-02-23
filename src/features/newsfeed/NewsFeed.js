@@ -36,14 +36,17 @@ export const NewsFeed = () => {
     const posts = responseJSON.data.children;
 
     // initialise payload for newsFeed/loadPosts action
-    const payload = {posts: {}, after: '', before: ''};
+    const payload = {posts: [], after: '', before: ''};
 
     payload.before = responseJSON.data.before;
     payload.after = responseJSON.data.after;
 
+
+    let counter = 0;
+
     // interate through array of posts and add to payload object
     for (let post of posts) {
-      payload.posts[post.data.id] = {
+      payload.posts[counter] = {
         title: post.data.title,
         subredditName: post.data.subreddit_name_prefixed,
         image: post.data.preview,
@@ -52,11 +55,12 @@ export const NewsFeed = () => {
       }
       if (post.data.preview) {
         if (post.data.preview.images[0].resolutions.length === 0) {
-          payload.posts[post.data.id].image = post.data.preview.images[0].source.url.replaceAll('&amp;', '&');
+          payload.posts[counter].image = post.data.preview.images[0].source.url.replaceAll('&amp;', '&');
         } else {
-          payload.posts[post.data.id].image = post.data.preview.images[0].resolutions[post.data.preview.images[0].resolutions.length - 1].url.replaceAll('&amp;', '&');
+          payload.posts[counter].image = post.data.preview.images[0].resolutions[post.data.preview.images[0].resolutions.length - 1].url.replaceAll('&amp;', '&');
         }
         }
+        counter++;
     }
 
     dispatch({
@@ -80,9 +84,6 @@ export const NewsFeed = () => {
       payload: 1,
     });
   }, [state.url]);
-
-  state = useSelector( state => state.newsFeed)
-  const postTitleArray = Object.values(state.posts);
 
   const handleClickAfter = () => {
     if (state.isLoading) {
@@ -114,13 +115,13 @@ export const NewsFeed = () => {
   return(
     <div className = "NewsFeed">
       <h1>Reddit Homepage</h1>
-      <SearchBar className="SearchBar" placeholder="Search the newsfeed" />
+      <SearchBar className="SearchBar" location="newsFeed" placeholder="Search the newsfeed" />
       <div className="page">
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>
         <button type="button" onClick={handleClickAfter} >&#62;</button>
       </div>
-      {postTitleArray.map((postTitle) => {
+      {state.posts.map((postTitle) => {
         return <PostTitle className="PostTitle"
                           key={postTitle.id}
                           title={postTitle.title}

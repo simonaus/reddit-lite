@@ -4,10 +4,10 @@ const options = {
   name: 'newsFeed',
   initialState: {
     searchTerm: '',
-    posts: {},
+    posts: [],
     pageNumber: 1,
     after: '',
-    before: [],
+    before: '',
     isLoading: false,
     isSearching: false,
     url: 'https://www.reddit.com',

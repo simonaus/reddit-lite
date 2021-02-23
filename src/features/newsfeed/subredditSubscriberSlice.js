@@ -3,26 +3,29 @@ import { createSlice } from '@reduxjs/toolkit';
 const options = {
   name: 'subredditSubscriber',
   initialState: {
-    searchTerm: '',
-    subreddits: {
-      id45243: {
-        name: 'r/worldnews',
-        numOfSubscribers: 1200003,
-      },
-      id45243: {
-        name: 'r/askreddit',
-        numOfSubscribers: 12042303,
-      },
-      id45243: {
-        name: 'r/jokes',
-        numOfSubscribers: 56003,
-      },
-    }
+    searchQuery: '',
+    subreddits: [],
+    isLoading: false,
+    pageNumber: 1,
+    before: '',
+    after: '',
   },
   reducers: {
     loadSubreddits: (state, action) => {
-      state.subreddits = action.payload;
-    }
+      state.subreddits = action.payload.subreddits;
+      state.after = action.payload.after;
+      state.before = action.payload.before;
+      console.log(state.subreddits)
+    },
+    changeIsLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+    changeSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+    changePageNumber: (state, action) => {
+      state.pageNumber = action.payload;
+    },
   }
 }
 

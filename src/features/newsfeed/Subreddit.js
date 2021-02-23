@@ -1,12 +1,13 @@
 import React from 'react';
 
-export const Subreddit = () => {
+export const Subreddit = ({name, numOfSubscribers, subredditClass}) => {
+
 
   return (
-    <div className='Subreddit'>
+    <div className={subredditClass}>
       <div className='subredditDetail'>
-        <h3>Title of Subreddit</h3>
-        <p className="numOfSubscribers" >Number of subscribers</p>
+        <h3>{name}</h3>
+        <p className="numOfSubscribers" >Total subscribers: {numOfSubscribers}</p>
       </div>
       <p className="add">+</p>
     </div>
