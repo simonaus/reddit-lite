@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { PostTitle } from './PostTitle';
 import { SearchBar } from '../SearchBar';
-import { useSelector } from 'react-redux';
-import { useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 export const NewsFeed = () => {
 
@@ -13,39 +12,29 @@ export const NewsFeed = () => {
   //fetch newsfeed data from reddit. get from either homepage or selected subreddit
   const fetchNewsFeed = async (query = '') => {
 
+    window.scrollTo(0, 0);
+
     dispatch({
       type: 'newsFeed/changeIsLoading',
       payload: true,
     })
 
     let response;
-
-    if (state.activeSubreddit === 'Homepage') {
-      response = await fetch('https://www.reddit.com/.json' + query);
-      console.log('https://www.reddit.com/.json' + query)
-    } else {
-      response = await fetch('https://www.reddit.com/.json' + query);
-    }
-
+    response = await fetch(state.url + query);
     const responseJSON = await response.json();
-    console.log(responseJSON);
 
+    console.log(state.url +query)
+    console.log(responseJSON);
     console.log(state);
 
     // access array of posts
     const posts = responseJSON.data.children;
 
-    console.log(posts)
-
     // initialise payload for newsFeed/loadPosts action
     const payload = {posts: {}, after: '', before: ''};
 
-    console.log(responseJSON);
     payload.before = responseJSON.data.before;
     payload.after = responseJSON.data.after;
-
-    console.log('Hello' + payload.before);
-
 
     // interate through array of posts and add to payload object
     for (let post of posts) {
@@ -57,7 +46,6 @@ export const NewsFeed = () => {
         id: post.data.id,
       }
       if (post.data.preview) {
-        console.log(post);
         if (post.data.preview.images[0].resolutions.length === 0) {
           payload.posts[post.data.id].image = post.data.preview.images[0].source.url.replaceAll('&amp;', '&');
         } else {
@@ -86,18 +74,18 @@ export const NewsFeed = () => {
       type: 'newsFeed/changePageNumber',
       payload: 1,
     });
-  }, [state.activeSubreddit]);
+  }, [state.url]);
 
   state = useSelector( state => state.newsFeed)
   const postTitleArray = Object.values(state.posts);
-
-  console.log(state.before)
 
   const handleClickAfter = () => {
     if (state.isLoading) {
       return;
     }
-    fetchNewsFeed('?after=' + state.after + '&count=' + (state.pageNumber * 25));
+    //state of query is & or ? depending on whether url alredy contains search query
+    const isSearching = (state.isSearching) ? '&' : '?'
+    fetchNewsFeed(isSearching + 'after=' + state.after + '&count=' + (state.pageNumber * 25));
     dispatch({
       type: 'newsFeed/changePageNumber',
       payload: state.pageNumber + 1,
@@ -108,8 +96,9 @@ export const NewsFeed = () => {
     if (state.isLoading) {
       return;
     }
-
-    fetchNewsFeed('?before=' + state.before + '&count=' + ((state.pageNumber - 1)  * 25));
+    //state of query is & or ? depending on whether url alredy contains search query
+    const isSearching = (state.isSearching) ? '&' : '?'
+    fetchNewsFeed(isSearching + 'before=' + state.before + '&count=' + ((state.pageNumber - 1)  * 25));
 
     dispatch({
       type: 'newsFeed/changePageNumber',
@@ -120,7 +109,7 @@ export const NewsFeed = () => {
   return(
     <div className = "NewsFeed">
       <h1>Reddit Homepage</h1>
-      <SearchBar className="SearchBar" placeholder="Search the below by post title" />
+      <SearchBar className="SearchBar" placeholder="Search the newsfeed" />
       <div className="page">
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>
@@ -135,6 +124,11 @@ export const NewsFeed = () => {
                           votes={postTitle.votes}
                           postTitleClass={(state.isLoading) ? 'hidden' : 'PostTitle'} />
       })}
+      <div className={(state.isLoading) ? 'hidden' : 'page'}>
+      {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
+        <p>Page {state.pageNumber}</p>
+        <button type="button" onClick={handleClickAfter} >&#62;</button>
+      </div>
       <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
     </div>
   )

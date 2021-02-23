@@ -40,6 +40,22 @@ header {
   align-items: center;
 }
 
+.SearchBar {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.SearchBar button {
+  margin-left: 20px;
+  height: 27px;
+}
+
+.SearchBar input {
+  width: 100%;
+  height: 27px;
+}
+
 h1 {
   text-align: center;
   padding-top: 20px;
@@ -54,6 +70,11 @@ h1 {
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.page p {
+  padding: 0 5px;
 }
 
 .PostTitle {
@@ -64,8 +85,10 @@ h1 {
 }
 
 .PostTitle img {
-  width: 70%;
-  padding-left: 10px;
+  padding-left: 20px;
+  padding-top: 10px;
+  max-height: 200px;
+  width: auto;
 }
 
 .Subreddit {
@@ -104,7 +127,7 @@ h1 {
 h3 {
   margin-left: 2%;
   margin-top: 1%;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .votes {
@@ -357,7 +380,14 @@ input {
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1rem;
+  }
+
+  .PostTitle img {
+    padding-left: 20px;
+    padding-top: 10px;
+    max-height: auto;
+    width: 200px;
   }
 
 

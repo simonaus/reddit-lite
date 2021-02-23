@@ -3,13 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const options = {
   name: 'newsFeed',
   initialState: {
-    activeSubreddit: 'Homepage',
     searchTerm: '',
     posts: {},
     pageNumber: 1,
     after: '',
     before: [],
     isLoading: false,
+    isSearching: false,
+    url: 'https://www.reddit.com/.json'
   },
   reducers: {
     loadPosts: (state, action) => {
@@ -22,6 +23,12 @@ const options = {
     },
     changeIsLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    updateUrl: (state, action) => {
+      state.url = action.payload;
+    },
+    changeIsSearching: (state, action) => {
+      state.isSearching = action.payload;
     },
   }
 }
