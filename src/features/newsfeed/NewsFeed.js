@@ -113,7 +113,7 @@ export const NewsFeed = () => {
   }
 
   return(
-    <div className = "NewsFeed">
+    <div className={(state.isToggle) ? "NewsFeed toggleOn" : "NewsFeed"}>
       <h1>{state.activeSubreddit}</h1>
       <SearchBar className="SearchBar" location="newsFeed" placeholder={"Search the " + state.activeSubreddit + " Newsfeed"} />
       <div className="page">

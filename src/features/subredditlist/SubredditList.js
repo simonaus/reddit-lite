@@ -6,7 +6,7 @@ export const SubredditList = () => {
 
   const state = useSelector( state => state.subredditList)
   return(
-    <div className='SubredditList'>
+    <div className={(state.isToggle) ? "SubredditList" : "SubredditList toggleOff"}>
       <p className='subredditListTitle'>Check out these subreddits</p>
       {state.subreddits.map( subreddit => {
         return <SubredditTitle key={subreddit.displayName}

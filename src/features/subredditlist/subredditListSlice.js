@@ -18,6 +18,9 @@ const options = {
     removeSubreddit: (state, action) => {
       state.subreddits = state.subreddits.filter( subreddit => subreddit.urlName !== action.payload);
     },
+    toggle: (state, action) => {
+      state.isToggle = !state.isToggle;
+    }
   }
 }
 

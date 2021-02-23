@@ -12,6 +12,7 @@ const options = {
     isSearching: false,
     url: 'https://www.reddit.com',
     activeSubreddit: 'Homepage',
+    isToggle: false,
   },
   reducers: {
     loadPosts: (state, action) => {
@@ -33,7 +34,10 @@ const options = {
     },
     changeActiveSubreddit: (state, action) => {
       state.activeSubreddit = action.payload;
-    }
+    },
+    toggle: (state, action) => {
+      state.isToggle = !state.isToggle;
+    },
   }
 }
 

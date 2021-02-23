@@ -35,7 +35,7 @@ export const Subreddit = ({name, numOfSubscribers, subredditClass}) => {
         <h3>{name}</h3>
         <p className="numOfSubscribers" >Total subscribers: {numOfSubscribers}</p>
       </div>
-      <p className="add" onClick={handleClick} >{(hasSubscribed) ? '-' : '+'}</p>
+      <p className={(hasSubscribed) ? 'remove' : 'add'} onClick={handleClick} >{(hasSubscribed) ? '-' : '+'}</p>
     </div>
   )
 }

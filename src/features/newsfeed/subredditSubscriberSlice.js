@@ -9,6 +9,7 @@ const options = {
     pageNumber: 1,
     before: '',
     after: '',
+    isToggle: false,
   },
   reducers: {
     loadSubreddits: (state, action) => {
@@ -26,6 +27,9 @@ const options = {
     changePageNumber: (state, action) => {
       state.pageNumber = action.payload;
     },
+    toggle: (state, action) => {
+      state.isToggle = !state.isToggle;
+    }
   }
 }
 

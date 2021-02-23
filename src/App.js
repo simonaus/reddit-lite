@@ -7,14 +7,23 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SubredditSubscriber } from './features/newsfeed/SubredditSubscriber';
 import { PostDetail } from './features/postdetail/PostDetail';
 import store from './store';
+import { useSelector } from 'react-redux';
 
 function App() {
 
-  const fetchReddit = async () => {
-    const response = await fetch('https://www.reddit.com/r/space/comments/lnmo9p/perseverance_hazard_camera_photos_with_covers/.json');
-    const responseJSON = await response.json();
-    console.log(responseJSON[1].data.children[4].data.body);
+  const handleClick = () => {
+    store.dispatch({
+      type: 'subredditList/toggle',
+    })
+    store.dispatch({
+      type: 'subredditSubscriber/toggle',
+    })
+    store.dispatch({
+      type: 'newsFeed/toggle',
+    })
   }
+
+  const state = useSelector( state => state);
 
   return (
     <Router>
@@ -23,6 +32,7 @@ function App() {
           <Header />
         </header>
         <main>
+          <input type="image" className="toggleButton" onClick={handleClick} src={(store.getState().subredditList.isToggle) ? "iconfinder_Close_Icon_Dark_1398917.png" : "iconfinder_magnifying-glass-zoom-in-plus_3643761.png"} />
           <SubredditList className="SubredditList" />
           <Route path='/' exact component={NewsFeed} />
           <Route path='/subredditsubscriber' exact component={SubredditSubscriber} />

@@ -108,7 +108,7 @@ export const SubredditSubscriber = () => {
   }
 
   return(
-    <div className = "NewsFeed">
+    <div className={(state.isToggle) ? "NewsFeed toggleOn" : "NewsFeed"}>
       <h1>Subreddit Subscriber</h1>
       <SearchBar className="SearchBar" location='subredditSubscriber' placeholder="Search for a subreddit" />
       <div className={(!state.searchQuery || !state.after) ? 'hidden' : 'page'}>
