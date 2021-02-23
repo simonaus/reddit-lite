@@ -358,7 +358,11 @@ input {
   }
 
   .SubredditList {
-    display: none;
+    min-height: 300px;
+  }
+
+  .SubredditList a {
+    width: 100%;
   }
 
   h1 {
@@ -366,7 +370,7 @@ input {
   }
 
   input {
-    font-size: 1rem;
+    font-size: .7rem;
     margin-bottom: 5px;
   }
 
@@ -380,6 +384,10 @@ input {
   }
 
   h3 {
+    font-size: .8rem;
+  }
+
+  p.subreddit {
     font-size: 1rem;
   }
 

@@ -16,6 +16,10 @@ export const SearchBar = ({ placeholder, location }) => {
 
     e.preventDefault();
 
+    if (!value) {
+      return;
+    }
+
     dispatch({
       type: 'newsFeed/changeIsSearching',
       payload: true,

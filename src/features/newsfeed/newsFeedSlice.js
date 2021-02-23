@@ -11,7 +11,7 @@ const options = {
     isLoading: false,
     isSearching: false,
     url: 'https://www.reddit.com',
-    activeSubreddit: '',
+    activeSubreddit: 'Homepage',
   },
   reducers: {
     loadPosts: (state, action) => {

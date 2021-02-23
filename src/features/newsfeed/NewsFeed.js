@@ -114,8 +114,8 @@ export const NewsFeed = () => {
 
   return(
     <div className = "NewsFeed">
-      <h1>Reddit Homepage</h1>
-      <SearchBar className="SearchBar" location="newsFeed" placeholder="Search the newsfeed" />
+      <h1>{state.activeSubreddit}</h1>
+      <SearchBar className="SearchBar" location="newsFeed" placeholder={"Search the " + state.activeSubreddit + " Newsfeed"} />
       <div className="page">
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>

@@ -39,6 +39,8 @@ export const SubredditSubscriber = () => {
     let counter = 0;
 
     for (let subreddit of subreddits) {
+
+      //if name does not exist, the search result is a user and should not be added to array
       if(subreddit. data.display_name_prefixed) {
         payload.subreddits[counter] = {
           name: subreddit.data.display_name_prefixed,
@@ -47,6 +49,13 @@ export const SubredditSubscriber = () => {
       } else {
         counter--
       }
+
+      //some subreddits are private so num of subscribers not available
+
+      if (!subreddit.data.subscribers) {
+        payload.subreddits[counter].numOfSubscribers = 'Private'
+      }
+
       counter++;
     }
 
@@ -65,11 +74,11 @@ export const SubredditSubscriber = () => {
 
   //only load results on mount or if search has changed
   useEffect(() => {
-    fetchSubreddits();
     dispatch({
-      type: 'newsFeed/changePageNumber',
+      type: 'subredditSubscriber/changePageNumber',
       payload: 1,
     });
+    fetchSubreddits();
   }, [state.searchQuery]);
 
   const handleClickAfter = () => {
@@ -102,7 +111,7 @@ export const SubredditSubscriber = () => {
     <div className = "NewsFeed">
       <h1>Subreddit Subscriber</h1>
       <SearchBar className="SearchBar" location='subredditSubscriber' placeholder="Search for a subreddit" />
-      <div className={(!state.searchQuery) ? 'hidden' : 'page'}>
+      <div className={(!state.searchQuery || !state.after) ? 'hidden' : 'page'}>
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>
         <button type="button" onClick={handleClickAfter} >&#62;</button>
@@ -115,7 +124,7 @@ export const SubredditSubscriber = () => {
                           subredditClass={(state.isLoading) ? 'hidden' : 'Subreddit'}
         />
       })}
-      <div className={(state.isLoading || !state.searchQuery) ? 'hidden' : 'page'}>
+      <div className={(state.isLoading || !state.searchQuery || !state.after) ? 'hidden' : 'page'}>
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>
         <button type="button" onClick={handleClickAfter} >&#62;</button>
