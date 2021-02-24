@@ -135,7 +135,9 @@ export const PostDetail = () => {
                         commentLevel={comment.commentLevel}
                         user={'Posted by' + comment.user}
                         votes={comment.votes}
-                        replies={comment.replies} />
+                        replies={comment.replies}
+                        hidden={false}
+                         />
       })}
     </div>
   )
