@@ -265,6 +265,7 @@ input {
   padding-top: 10px;
   padding-left: 10px;
   width: 50%;
+  font-style: italic;
 }
 
 .commentVotes {
@@ -277,6 +278,7 @@ input {
 .commentBody {
   padding-top: 20px;
   padding-left: 10px;
+  font-weight: 200;
 }
 
 .toggleButton {

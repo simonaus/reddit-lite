@@ -54,23 +54,26 @@ export const PostDetail = () => {
 
     // format array of comment objects - removing most key/value pairs
     const reduceCommentsArray = (commentsArray, commentLevel) => {
-      commentsArray.map( comment => {
+      return commentsArray.map( comment => {
 
         const commentObject = {
           user: comment.data.author,
           votes: comment.data.score,
           body: comment.data.body,
           commentLevel: commentLevel,
+          id: comment.data.id,
         }
 
 
         // check to see if comment has replies - if so, format this array of comment objects recursively
         if (comment.data.replies) {
-          const repliesArray = reduceCommentsArray(comment.data.replies.data.children, commentLevel);
+
+          // filter out the replies which are not comments
+          const filteredRepliesArray = comment.data.replies.data.children.filter( item => item.kind === 't1');
+
+          const repliesArray = reduceCommentsArray(filteredRepliesArray, commentLevel + 1);
           commentObject.replies = repliesArray;
         }
-
-        console.log(commentObject);
 
         return commentObject;
       })
@@ -113,16 +116,14 @@ export const PostDetail = () => {
       <img src={state.post.image}></img>
       <p className="body">{state.post.body}</p>
       <h1>Comments</h1>
-      <Comment commentLevel={0} />
-      <Comment commentLevel={0} />
-      <Comment commentLevel={0} />
-      <Comment commentLevel={0} />
-      <Comment commentLevel={0} />
-      <Comment commentLevel={1} />
-      <Comment commentLevel={2} />
-      <Comment commentLevel={0} />
-      <Comment commentLevel={0} />
-
+      {state.comments.map( comment => {
+        return <Comment key={comment.id}
+                        body={comment.body}
+                        commentLevel={comment.commentLevel}
+                        user={'Posted by' + comment.user}
+                        votes={comment.votes}
+                        replies={comment.replies} />
+      })}
     </div>
   )
 }
