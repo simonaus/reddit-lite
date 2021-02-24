@@ -112,10 +112,10 @@ export const NewsFeed = () => {
     <div className={(state.isToggle) ? "NewsFeed toggleOn" : "NewsFeed"}>
       <h1>{state.activeSubreddit}</h1>
       <SearchBar className="SearchBar" location="newsFeed" placeholder={"Search the " + state.activeSubreddit + " Newsfeed"} />
-      <div className="page">
+      <div className={(!state.posts.length) ? 'hidden' : 'page'}>
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
         <p>Page {state.pageNumber}</p>
-        <button type="button" onClick={handleClickAfter} >&#62;</button>
+        <button type="button" className={(state.after) ? '' : 'hidden'} onClick={handleClickAfter} >&#62;</button>
       </div>
       {state.posts.map((postTitle) => {
         return <PostTitle className="PostTitle"
@@ -127,12 +127,13 @@ export const NewsFeed = () => {
                           votes={postTitle.votes}
                           postTitleClass={(state.isLoading) ? 'hidden' : 'PostTitle'} />
       })}
-      <div className={(state.isLoading) ? 'hidden' : 'page'}>
+      <div className={(state.isLoading || !state.posts.length) ? 'hidden' : 'page'}>
       {(state.pageNumber !== 1) ? <button type="button" onClick={handleClickBefore} >&#60;</button> : <p></p>}
-        <p>Page {state.pageNumber}</p>
-        <button type="button" onClick={handleClickAfter} >&#62;</button>
+        <p className={(state.posts.length < 5) ? 'hidden' : ''}>Page {state.pageNumber}</p>
+        <button type="button" className={(state.after) ? '' : 'hidden'} onClick={handleClickAfter} >&#62;</button>
       </div>
       <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
+      <p className={(!state.posts.length && !state.isLoading) ? 'loading' : 'hidden'}>No results found</p>
     </div>
   )
 }

@@ -28,12 +28,9 @@ export const PostDetail = () => {
       url = '';
     }
 
-    console.log(url)
-
     let response;
     response = await fetch(url);
     const responseJSON = await response.json();
-    console.log(responseJSON);
 
     const postData = responseJSON[0].data.children[0].data;
 
@@ -68,6 +65,11 @@ export const PostDetail = () => {
     const reduceCommentsArray = (commentsArray, commentLevel) => {
       return commentsArray.map( comment => {
 
+        // ensure nested comments dont become too skinny to display
+        if (commentLevel > 12) {
+          commentLevel = 12;
+        }
+
         const commentObject = {
           user: comment.data.author,
           votes: comment.data.score,
@@ -76,19 +78,8 @@ export const PostDetail = () => {
           id: comment.data.id,
         }
 
-        if (commentObject.user === 'starcadia') {
-
-          console.log(commentObject.body);
-        }
-
-
         if (commentObject.body) {
           commentObject.body = commentObject.body.replaceAll('&gt;', '>',).replaceAll('&amp;#x200b;', '').replaceAll('&amp;#x200B;', '');
-        }
-
-        if (commentObject.user === 'starcadia') {
-
-          console.log(commentObject.body);
         }
 
         // check to see if comment has replies - if so, format this array of comment objects recursively
@@ -106,8 +97,6 @@ export const PostDetail = () => {
     }
 
     const commentsArray = reduceCommentsArray(commentData, 0);
-
-    console.log(commentsArray);
 
     dispatch({
       type: 'postDetail/loadComments',
@@ -130,8 +119,6 @@ export const PostDetail = () => {
     };
   }, [])
 
-
-
   return(
     <div className = "PostDetail">
       <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
@@ -141,7 +128,7 @@ export const PostDetail = () => {
       <a href={state.post.link} className="postlink">{state.post.link}</a>
       <img src={state.post.image}></img>
       <ReactMarkdown className="body" source={state.post.body} />
-      <h1>Comments</h1>
+      <h1 id="commentsHeading">Comments</h1>
       {state.comments.map( comment => {
         return <Comment key={comment.id}
                         body={comment.body}
