@@ -21,6 +21,9 @@ function App() {
     store.dispatch({
       type: 'newsFeed/toggle',
     })
+    store.dispatch({
+      type: 'postDetail/toggle',
+    })
   }
 
   const state = useSelector( state => state);

@@ -14,6 +14,7 @@ const options = {
       subreddit: '',
     },
     comments: [],
+    isToggle: false,
   },
   reducers: {
     loadPost: (state, action) => {
@@ -31,6 +32,9 @@ const options = {
     resetSlice: (state, action) => {
       state.post = {};
       state.comments = [];
+    },
+    toggle: (state, action) => {
+      state.isToggle = !state.isToggle;
     },
   }
 }

@@ -140,6 +140,7 @@ header {
   font-size: 3rem;
   text-align: end;
   width: 5%;
+  padding-bottom: 0px;
 }
 
 .remove {
@@ -147,6 +148,7 @@ header {
   text-align: end;
   width: 5%;
   margin-right: 7px;
+  padding-bottom: 0px;
 }
 
 .subreddit {
@@ -436,8 +438,13 @@ input {
     margin-top: 80px;
   }
 
+  .PostDetail.toggleOn {
+    margin-top: 20px;
+  }
+
+
   .SubredditList {
-    min-height: 300px;
+    min-height: 250px;
   }
 
   .SubredditList a {
@@ -493,5 +500,9 @@ input {
 
   .SubredditList.toggleOff {
     display: none;
+  }
+
+  h1.postDetailSubredditTitle{
+    margin-top: 30px;
   }
 }

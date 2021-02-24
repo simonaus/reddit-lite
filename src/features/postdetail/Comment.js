@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { useSelector, useDispatch } from 'react-redux'
 
 export const Comment = ({ body, commentLevel, user, votes, replies, hidden}) => {
 

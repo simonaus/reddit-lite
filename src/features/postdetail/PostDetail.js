@@ -120,15 +120,15 @@ export const PostDetail = () => {
   }, [])
 
   return(
-    <div className = "PostDetail">
+    <div className={(state.isToggle) ? "PostDetail toggleOn" : "PostDetail"} >
       <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
-      <h1>{state.post.subreddit}</h1>
+      <h1 className="postDetailSubredditTitle">{state.post.subreddit}</h1>
       <h1>{state.post.title}</h1>
       <p className="user">{state.post.user}</p>
       <a href={state.post.link} className="postlink">{state.post.link}</a>
       <img src={state.post.image}></img>
-      <ReactMarkdown className="body" source={state.post.body} />
-      <h1 id="commentsHeading">Comments</h1>
+      <ReactMarkdown className={(state.post.body) ? "body" : "body hidden"} source={state.post.body} />
+      <h1 className={(state.isLoading) ? 'hidden' : ''}id="commentsHeading">{(state.comments.length === 0) ? 'No comments posted' : 'Comments'}</h1>
       {state.comments.map( comment => {
         return <Comment key={comment.id}
                         body={comment.body}
