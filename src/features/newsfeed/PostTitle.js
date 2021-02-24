@@ -8,9 +8,14 @@ export const PostTitle = ({title, subredditName, votes, image, postTitleClass, p
   const dispatch = useDispatch();
 
   const handleClick = () => {
+
+    const url = 'https://www.reddit.com' + permalink + '.json';
+
+    sessionStorage.setItem('url', url);
+
     dispatch({
       type: 'postDetail/updateUrl',
-      payload: 'https://www.reddit.com' + permalink + '.json',
+      payload: url,
     })
   }
 

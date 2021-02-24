@@ -18,9 +18,20 @@ export const PostDetail = () => {
       payload: true,
     })
 
-    console.log(state.url)
+    // allows users to go back to previous post if they navigated out of the app during the session
+    let url;
+    if (state.url) {
+      url = state.url
+    } else if (sessionStorage.getItem('url')) {
+      url = sessionStorage.getItem('url');
+    } else {
+      url = '';
+    }
+
+    console.log(url)
+
     let response;
-    response = await fetch(state.url);
+    response = await fetch(url);
     const responseJSON = await response.json();
     console.log(responseJSON);
 
@@ -29,7 +40,7 @@ export const PostDetail = () => {
     const post = {
       title: postData.title,
       user: 'Posted by ' + postData.author,
-      body: postData.selftext.replaceAll('\n', '\n\n'),
+      body: postData.selftext.replaceAll('&gt;', '>',).replaceAll('&amp;#x200b;', '').replaceAll('&amp;#x200B;', ''),
       subreddit: postData.subreddit_name_prefixed,
     }
 
@@ -65,6 +76,20 @@ export const PostDetail = () => {
           id: comment.data.id,
         }
 
+        if (commentObject.user === 'starcadia') {
+
+          console.log(commentObject.body);
+        }
+
+
+        if (commentObject.body) {
+          commentObject.body = commentObject.body.replaceAll('&gt;', '>',).replaceAll('&amp;#x200b;', '').replaceAll('&amp;#x200B;', '');
+        }
+
+        if (commentObject.user === 'starcadia') {
+
+          console.log(commentObject.body);
+        }
 
         // check to see if comment has replies - if so, format this array of comment objects recursively
         if (comment.data.replies) {
