@@ -1,13 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-export const PostTitle = ({title, subredditName, votes, image, postTitleClass}) => {
+export const PostTitle = ({title, subredditName, votes, image, postTitleClass, permalink}) => {
+
+  const state = useSelector( state => state.postDetail);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch({
+      type: 'postDetail/updateUrl',
+      payload: 'https://www.reddit.com' + permalink + '.json',
+    })
+  }
+
+  // only loads image if it is included in post
+  const loadImage = () => {
+    if (image) {
+      return <img src={image} />
+    }
+  }
 
   return (
-    <div className={postTitleClass}>
-      <p className="subreddit">{subredditName}</p>
-      <h3>{title}</h3>
-      <img src={image} />
-      <p className="votes" >Votes: {votes}</p>
-    </div>
+
+      <div onClick={handleClick} className={postTitleClass}>
+        <Link to='/postdetail'>
+          <p className="subreddit">{subredditName}</p>
+          <h3>{title}</h3>
+          <div>
+            {loadImage()}
+          </div>
+          <p className="votes" >Votes: {votes}</p>
+        </Link>
+      </div>
+
   )
 }

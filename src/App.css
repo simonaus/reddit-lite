@@ -57,7 +57,7 @@ header {
   height: 27px;
 }
 
-h1 {
+.NewsFeed h1 {
   text-align: center;
   padding-top: 20px;
   margin-bottom: 40px;
@@ -249,7 +249,6 @@ input {
 
 .body {
  width: 80%;
- padding-top: 20px;
  font-weight: 300;
  font-size: .9rem;
 }
@@ -290,6 +289,40 @@ input {
 
 .loading {
   font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.PostDetail img {
+  width: 80%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.PostDetail h1 {
+  font-size: 1.2rem;
+  width: 80%;
+  text-align: left;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.user {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.body {
+  margin-bottom: 20px;
+}
+
+.postlink {
+  text-align: start;
+  margin-bottom: 15px;
+  font-style: italic;
+  color: darkblue;
+  text-decoration: underline;
+  width: 80%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -326,7 +359,7 @@ input {
     justify-content: center;
   }
 
-  a {
+  .anchor {
     width: 50%;
     margin-right: 0px;
     height: 50px;

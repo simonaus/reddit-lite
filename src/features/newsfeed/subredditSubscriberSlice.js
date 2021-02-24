@@ -16,7 +16,6 @@ const options = {
       state.subreddits = action.payload.subreddits;
       state.after = action.payload.after;
       state.before = action.payload.before;
-      console.log(state.subreddits)
     },
     changeIsLoading: (state, action) => {
       state.isLoading = action.payload;

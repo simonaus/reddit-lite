@@ -24,13 +24,8 @@ export const NewsFeed = () => {
     }
 
     let response;
-    console.log(state.url +query)
     response = await fetch(state.url + query);
     const responseJSON = await response.json();
-
-    console.log(state.url +query)
-    console.log(responseJSON);
-    console.log(state);
 
     // access array of posts
     const posts = responseJSON.data.children;
@@ -52,6 +47,7 @@ export const NewsFeed = () => {
         image: post.data.preview,
         votes: post.data.score,
         id: post.data.id,
+        permalink: post.data.permalink,
       }
       if (post.data.preview) {
         if (post.data.preview.images[0].resolutions.length === 0) {
@@ -124,6 +120,7 @@ export const NewsFeed = () => {
       {state.posts.map((postTitle) => {
         return <PostTitle className="PostTitle"
                           key={postTitle.id}
+                          permalink={postTitle.permalink}
                           title={postTitle.title}
                           subredditName={postTitle.subredditName}
                           image={postTitle.image}

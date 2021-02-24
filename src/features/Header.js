@@ -12,10 +12,10 @@ export const Header = () => {
         <p className="iconTitle">reddit-lite</p>
       </div>
       <div className="nav">
-        <Link to='/'>
+        <Link className="anchor" to='/'>
           <h2 className="link">Homepage</h2>
         </Link>
-        <Link to='/subredditsubscriber'>
+        <Link className="anchor" to='/subredditsubscriber'>
           <h2 className="link">Subreddit Subscriber</h2>
         </Link>
       </div>

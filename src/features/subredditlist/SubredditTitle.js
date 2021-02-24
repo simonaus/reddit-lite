@@ -26,7 +26,7 @@ export const SubredditTitle = ({displayName, urlName}) => {
 
   }
 
-  return <Link to='/'>
+  return <Link className="anchor" to='/'>
            <p onClick={handleClick} className="SubredditTitle">{displayName}</p>
          </Link>
 }
