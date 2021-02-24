@@ -30,7 +30,7 @@ const options = {
     },
     resetSlice: (state, action) => {
       state.post = {};
-      state.comments = {hello: 1,};
+      state.comments = [];
     },
   }
 }

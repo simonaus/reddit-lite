@@ -8,6 +8,28 @@ a {
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.commentBody a {
+  color: blue;
+  font-style: italic;
+}
+
+.commentBody p {
+  font-weight: 200;
+}
+
+.body a {
+  color:blue;
+  font-style: italic;
+}
+
+.body p {
+  font-weight: 200;
+}
+
+p {
+  padding-bottom: 10px;
+}
+
 .App {
   display: flex;
   flex-wrap: wrap;
@@ -247,12 +269,6 @@ input {
   text-align: left;
 }
 
-.body {
- width: 80%;
- font-weight: 300;
- font-size: .9rem;
-}
-
 .Comment {
   border: 1px solid black;
   margin: 10px 0;
@@ -278,7 +294,6 @@ input {
 .commentBody {
   padding-top: 20px;
   padding-left: 10px;
-  font-weight: 200;
 }
 
 .toggleButton {
@@ -316,6 +331,7 @@ input {
 
 .body {
   margin-bottom: 20px;
+  width: 80%;
 }
 
 .postlink {

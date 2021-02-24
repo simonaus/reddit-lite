@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export const Comment = ({ body, commentLevel, user, votes, replies }) => {
 
@@ -12,7 +13,7 @@ export const Comment = ({ body, commentLevel, user, votes, replies }) => {
     <div className='Comment' style={{width: widthPercent, 'marginLeft': marginLeft, 'marginTop': marginTop}}>
       <p className="commentUser">{user}</p>
       <p className="commentVotes">{votes}</p>
-      <p className="commentBody">{body}</p>
+      <ReactMarkdown className="commentBody" source={body} />
     </div>
   )
   } else {

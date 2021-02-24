@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Comment } from './Comment';
 import { useSelector, useDispatch } from 'react-redux';
+import ReactMarkdown from 'react-markdown';
 
 
 export const PostDetail = () => {
@@ -28,7 +29,7 @@ export const PostDetail = () => {
     const post = {
       title: postData.title,
       user: 'Posted by ' + postData.author,
-      body: postData.selftext,
+      body: postData.selftext.replaceAll('\n', '\n\n'),
       subreddit: postData.subreddit_name_prefixed,
     }
 
@@ -114,7 +115,7 @@ export const PostDetail = () => {
       <p className="user">{state.post.user}</p>
       <a href={state.post.link} className="postlink">{state.post.link}</a>
       <img src={state.post.image}></img>
-      <p className="body">{state.post.body}</p>
+      <ReactMarkdown className="body" source={state.post.body} />
       <h1>Comments</h1>
       {state.comments.map( comment => {
         return <Comment key={comment.id}
