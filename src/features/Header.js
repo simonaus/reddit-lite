@@ -39,12 +39,12 @@ export const Header = () => {
   return (
     <div className='Header'>
 
-      <Link to='/' onClick={handleHomepageClick} className='icon'>
+      <Link to='/reddit-lite' onClick={handleHomepageClick} className='icon'>
         <img src={logo} />
         <p className="iconTitle">reddit-lite</p>
       </Link>
       <div className="nav">
-        <Link className="anchor" to='/'>
+        <Link className="anchor" to='/reddit-lite'>
           <h2 className="link">Homepage</h2>
         </Link>
         <Link onClick={handleSubscriberClick} className="anchor" to='/subredditsubscriber'>

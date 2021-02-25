@@ -47,7 +47,7 @@ function App() {
         <main>
           <input type="image" className="toggleButton" onClick={handleClick} src={toggleImage} />
           <SubredditList className="SubredditList" />
-          <Route path='/' exact component={NewsFeed} />
+          <Route path='/reddit-lite' exact component={NewsFeed} />
           <Route path='/subredditsubscriber' exact component={SubredditSubscriber} />
           <Route path='/postdetail' exact component={PostDetail} />
         </main>

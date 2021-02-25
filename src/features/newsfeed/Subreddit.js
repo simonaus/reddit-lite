@@ -53,7 +53,7 @@ export const Subreddit = ({name, numOfSubscribers, subredditClass}) => {
   return (
 
       <div className={subredditClass}>
-      <Link className={'subredditLink'} to='/'>
+      <Link className={'subredditLink'} to='/reddit-lite'>
         <div onClick={handleClick} className='subredditDetail'>
           <h3>{name}</h3>
           <p className="numOfSubscribers" >Total subscribers: {numOfSubscribers}</p>

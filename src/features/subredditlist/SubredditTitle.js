@@ -26,7 +26,7 @@ export const SubredditTitle = ({displayName, urlName}) => {
 
   }
 
-  return <Link className="anchor" to='/'>
+  return <Link className="anchor" to='/reddit-lite'>
            <p onClick={handleClick} className="SubredditTitle">{displayName}</p>
          </Link>
 }
