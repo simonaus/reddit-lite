@@ -8,8 +8,7 @@ a {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.commentBody a {
-  color: blue;
+.commentBody  {
   font-style: italic;
 }
 
@@ -52,7 +51,7 @@ header {
   margin-top: 50px;
   width: 25%;
   background-color: #202020;
-  min-height: 2000px;
+  min-height: 800px;
 }
 
 .NewsFeed {
@@ -125,15 +124,22 @@ header {
   flex-wrap: wrap;
 }
 
+a.subredditLink {
+  width: 95%;
+}
+
 .subredditDetail {
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
 }
 
 .numOfSubscribers {
-  margin-left: 4%
+  margin-left: 4%;
+  padding-bottom: 5px;
+  font-weight: 200;
 }
 
 .add {
@@ -146,7 +152,7 @@ header {
 .remove {
   font-size: 3rem;
   text-align: end;
-  width: 5%;
+  width: 3%;
   margin-right: 7px;
   padding-bottom: 0px;
 }
@@ -218,7 +224,7 @@ input {
 }
 
 .icon {
-  width: 50%;
+  width: 25%;
   display: flex;
 }
 
@@ -249,6 +255,7 @@ input {
   text-align: right;
   margin-right: 50px;
   line-height: 50px;
+  height: 100%;
 }
 
 .PostDetail {
@@ -495,7 +502,7 @@ input {
   }
 
   .numOfSubscribers {
-    font-size: .9rem;
+    font-size: .8rem;
   }
 
   .SubredditList.toggleOff {
@@ -504,5 +511,10 @@ input {
 
   h1.postDetailSubredditTitle{
     margin-top: 30px;
+  }
+
+  a.subredditLink {
+    width: 85%;
+    height: 100%;
   }
 }

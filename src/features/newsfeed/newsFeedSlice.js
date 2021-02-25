@@ -41,6 +41,9 @@ const options = {
     toggleOff: (state, action) => {
       state.isToggle = false;
     },
+    clearPosts: (state, action) => {
+      state.posts = action.payload;
+    },
   }
 }
 

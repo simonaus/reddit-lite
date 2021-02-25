@@ -17,6 +17,11 @@ export const PostTitle = ({title, subredditName, votes, image, postTitleClass, p
       type: 'postDetail/updateUrl',
       payload: url,
     })
+
+    dispatch({
+      type: 'newsFeed/clearPosts',
+      payload: [],
+    })
   }
 
   // only loads image if it is included in post
