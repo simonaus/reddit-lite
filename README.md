@@ -31,6 +31,7 @@ Using reddit-lite, it is possible to access a portion of the data uploaded by us
 
 - Videos can be loaded and played
 - UI animations (eg. for loading and display of content)
+- Fix bug with replaceAll() function causing error on IE and Samsung Internet
 
 ## Technologies
 

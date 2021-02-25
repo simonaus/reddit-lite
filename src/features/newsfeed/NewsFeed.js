@@ -87,7 +87,7 @@ export const NewsFeed = () => {
         type: 'newsFeed/changeIsLoading',
         payload: false,
       })
-      alert('Error: Unable to read data from reddit servers')
+      alert('Error: Unable to read data from reddit servers');
     }
 
   }

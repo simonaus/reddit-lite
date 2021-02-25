@@ -7,7 +7,7 @@ export const Header = () => {
 
   const dispatch = useDispatch()
 
-  const handleHomepageClick = () => {
+  const handleIconClick = () => {
   // if search mode is toggled on, toggle off, this will remove search parameter from url
   dispatch({
     type: 'newsFeed/changeIsSearching',
@@ -25,6 +25,19 @@ export const Header = () => {
   })
   }
 
+  const handleHomepageClick = () => {
+    // if search mode is toggled on, toggle off, this will remove search parameter from url
+    dispatch({
+      type: 'newsFeed/changeIsSearching',
+      payload: false,
+    })
+
+    dispatch({
+      type: 'newsFeed/changeActiveSubreddit',
+      payload: 'Homepage',
+    })
+    }
+
   const handleSubscriberClick = () => {
     // if search mode is toggled on, toggle off, this will remove search parameter from url
     dispatch({
@@ -39,12 +52,12 @@ export const Header = () => {
   return (
     <div className='Header'>
 
-      <Link to='/reddit-lite' onClick={handleHomepageClick} className='icon'>
+      <Link to='/reddit-lite' onClick={handleIconClick} className='icon'>
         <img src={logo} />
         <p className="iconTitle">reddit-lite</p>
       </Link>
       <div className="nav">
-        <Link className="anchor" to='/reddit-lite'>
+        <Link className="anchor" onClick={handleHomepageClick} to='/reddit-lite'>
           <h2 className="link">Homepage</h2>
         </Link>
         <Link onClick={handleSubscriberClick} className="anchor" to='/subredditsubscriber'>
