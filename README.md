@@ -1,9 +1,9 @@
-# Mixed Messages
+# Reddit-lite
 
 ## Table of contents
 - [Introduction](#Introduction)
 - [Features](#Features)
-- [Future Features](#Future Features)
+- [Future Features](#Future-Features)
 - [Technologies](#Technologies)
 
 ## Introduction
