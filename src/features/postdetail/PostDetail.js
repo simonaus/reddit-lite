@@ -11,6 +11,8 @@ export const PostDetail = () => {
 
   const loadPost = async () => {
 
+    try {
+
     window.scrollTo(0, 0);
 
     dispatch({
@@ -29,7 +31,21 @@ export const PostDetail = () => {
     }
 
     let response;
-    response = await fetch(url);
+
+    try {
+      response = await fetch(url);
+    } catch {
+      dispatch({
+        type: 'postDetail/changeIsLoading',
+        payload: false,
+      })
+      alert('Error: Unable to access reddit servers using URL provided');
+      return;
+    }
+
+
+
+
     const responseJSON = await response.json();
 
     const postData = responseJSON[0].data.children[0].data;
@@ -107,6 +123,17 @@ export const PostDetail = () => {
       type: 'postDetail/changeIsLoading',
       payload: false,
     })
+
+  } catch {
+    dispatch({
+      type: 'postDetail/changeIsLoading',
+      payload: false,
+    })
+    alert('Error: Unable to read data from reddit servers')
+
+
+  }
+
   }
 
 

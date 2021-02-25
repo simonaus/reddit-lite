@@ -42,7 +42,7 @@ export const Comment = ({ body, commentLevel, user, votes, replies, hidden}) => 
         <p className="commentVotes">{votes}</p>
         <ReactMarkdown className="commentBody" source={body} />
       </div>
-      <p style={{'marginLeft': marginLeft}} onClick={handleClick}>{(replies) ? repliesToggle : ''}</p>
+      <p className={'pointerMouse'} style={{'marginLeft': marginLeft}} onClick={handleClick}>{(replies) ? repliesToggle : ''}</p>
       {(replies) ? replies.map( comment => {
         return <Comment key={comment.id}
                         body={comment.body}

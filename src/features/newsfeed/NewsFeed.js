@@ -12,6 +12,8 @@ export const NewsFeed = () => {
   //fetch newsfeed data from reddit. get from either homepage or selected subreddit
   const fetchNewsFeed = async (query = '') => {
 
+    try {
+
     window.scrollTo(0, 0);
 
     dispatch({
@@ -24,11 +26,22 @@ export const NewsFeed = () => {
     }
 
     let response;
-    response = await fetch(state.url + query);
+
+    try {
+      response = await fetch(state.url + query);
+    } catch {
+      dispatch({
+        type: 'newsFeed/changeIsLoading',
+        payload: false,
+      })
+      alert('Error: Unable to access reddit servers using URL provided');
+      return;
+    }
+
     const responseJSON = await response.json();
 
     // access array of posts
-    const posts = responseJSON.data.children;
+    const posts = responseJSON.data.children
 
     // initialise payload for newsFeed/loadPosts action
     const payload = {posts: [], after: '', before: ''};
@@ -69,6 +82,14 @@ export const NewsFeed = () => {
       type: 'newsFeed/loadPosts',
       payload: payload,
     });
+
+    } catch {
+      dispatch({
+        type: 'newsFeed/changeIsLoading',
+        payload: false,
+      })
+      alert('Error: Unable to read data from reddit servers')
+    }
 
   }
 

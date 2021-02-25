@@ -8,9 +8,6 @@ a {
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.commentBody  {
-  font-style: italic;
-}
 
 .commentBody p {
   font-weight: 200;
@@ -358,6 +355,10 @@ input {
   color: darkblue;
   text-decoration: underline;
   width: 90%;
+}
+
+.pointerMouse{
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {

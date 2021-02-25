@@ -59,7 +59,7 @@ export const Subreddit = ({name, numOfSubscribers, subredditClass}) => {
           <p className="numOfSubscribers" >Total subscribers: {numOfSubscribers}</p>
         </div>
         </Link>
-        <p className={(hasSubscribed) ? 'remove' : 'add'} onClick={handleAddClick} >{(hasSubscribed) ? '-' : '+'}</p>
+        <p className={(hasSubscribed) ? 'remove pointerMouse' : 'add pointerMouse'} onClick={handleAddClick} >{(hasSubscribed) ? '-' : '+'}</p>
       </div>
 
   )

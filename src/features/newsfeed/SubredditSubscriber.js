@@ -12,6 +12,8 @@ export const SubredditSubscriber = () => {
   //fetch newsfeed data from reddit. get from either homepage or selected subreddit
   const fetchSubreddits = async (query = '') => {
 
+    try {
+
     if (!state.searchQuery) {
       return
     }
@@ -23,12 +25,19 @@ export const SubredditSubscriber = () => {
     })
 
     let response;
-    response = await fetch('https://www.reddit.com/search/.json?q=' + state.searchQuery + '&type=sr%2Cuser' + query);
-    const responseJSON = await response.json();
 
-    console.log('https://www.reddit.com/search/.json?q=' + state.searchQuery + '&type=sr%2Cuser' + query)
-    console.log(responseJSON);
-    console.log(state);
+    try {
+      response = await fetch('https://www.reddit.com/search/.json?q=' + state.searchQuery + '&type=sr%2Cuser' + query);
+    } catch {
+      dispatch({
+        type: 'subredditSubscriber/changeIsLoading',
+        payload: false,
+      })
+      alert('Error: Unable to access reddit servers using URL provided');
+      return;
+    }
+
+    const responseJSON = await response.json();
 
     const subreddits = responseJSON.data.children;
     const before = responseJSON.data.before;
@@ -69,6 +78,14 @@ export const SubredditSubscriber = () => {
       type: 'subredditSubscriber/loadSubreddits',
       payload: payload,
     });
+
+  } catch {
+    dispatch({
+      type: 'subredditSubscriber/changeIsLoading',
+      payload: false,
+    })
+    alert('Error: Unable to read data from reddit servers')
+  }
 
   }
 
@@ -130,6 +147,7 @@ export const SubredditSubscriber = () => {
         <button type="button" onClick={handleClickAfter} >&#62;</button>
       </div>
       <p className={(!state.isLoading) ? 'hidden' : 'loading'}>Loading...</p>
+      <p className={(!state.subreddits.length && !state.isLoading) ? 'loading' : 'hidden'}>No results found</p>
     </div>
   )
 }
