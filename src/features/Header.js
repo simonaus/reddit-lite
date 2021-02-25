@@ -40,7 +40,7 @@ export const Header = () => {
 
       <Link to='/' onClick={handleHomepageClick} className='icon'>
         <img src="iconfinder_feather_2561433icon.png" />
-        <p className="iconTitle">reddit-lite</p>
+        <p className="iconTitle">reddit-testing</p>
       </Link>
       <div className="nav">
         <Link className="anchor" to='/'>
