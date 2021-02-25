@@ -34,7 +34,6 @@ export const NewsFeed = () => {
         type: 'newsFeed/changeIsLoading',
         payload: false,
       })
-      alert('Error: Unable to access reddit servers using URL provided');
       return;
     }
 

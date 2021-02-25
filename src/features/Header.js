@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import logo from './iconfinder_feather_2561433icon.png';
 
 export const Header = () => {
 
@@ -39,7 +40,7 @@ export const Header = () => {
     <div className='Header'>
 
       <Link to='/' onClick={handleHomepageClick} className='icon'>
-        <img src="iconfinder_feather_2561433icon.png" />
+        <img src={logo} />
         <p className="iconTitle">reddit-lite</p>
       </Link>
       <div className="nav">

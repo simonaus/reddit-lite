@@ -8,6 +8,8 @@ import { SubredditSubscriber } from './features/newsfeed/SubredditSubscriber';
 import { PostDetail } from './features/postdetail/PostDetail';
 import store from './store';
 import { useSelector } from 'react-redux';
+import cross from './iconfinder_Close_Icon_Dark_1398917.png';
+import magGlass from './iconfinder_magnifying-glass-zoom-in-plus_3643761.png';
 
 function App() {
 
@@ -28,6 +30,14 @@ function App() {
 
   const state = useSelector( state => state);
 
+  let toggleImage;
+
+  if (store.getState().subredditList.isToggle) {
+    toggleImage = cross;
+  } else {
+    toggleImage = magGlass;
+  }
+
   return (
     <Router>
       <div className="App">
@@ -35,7 +45,7 @@ function App() {
           <Header />
         </header>
         <main>
-          <input type="image" className="toggleButton" onClick={handleClick} src={(store.getState().subredditList.isToggle) ? "iconfinder_Close_Icon_Dark_1398917.png" : "iconfinder_magnifying-glass-zoom-in-plus_3643761.png"} />
+          <input type="image" className="toggleButton" onClick={handleClick} src={toggleImage} />
           <SubredditList className="SubredditList" />
           <Route path='/' exact component={NewsFeed} />
           <Route path='/subredditsubscriber' exact component={SubredditSubscriber} />
