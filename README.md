@@ -14,7 +14,7 @@ Reddit is a hugely popular website, where users upload text, photos, videos and 
 
 Using reddit-lite, it is possible to access a portion of the data uploaded by users onto the reddit servers. By excluding various functionalities available on the official site (eg. posting capabilities, awards, user profiles), reddit-lite provides a more streamlined view of the core content which reddit makes available.
 
-![image](https://user-images.githubusercontent.com/66684013/125090047-d82e6e00-e0c6-11eb-9bce-077e2d9fc932.png)
+![image](https://user-images.githubusercontent.com/66684013/125093571-57717100-e0ca-11eb-98e2-72c7dcfd9c22.png)
 
 ## Getting Started
 
