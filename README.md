@@ -2,16 +2,23 @@
 
 ## Table of contents
 - [Introduction](#Introduction)
+- [Getting Started](#Getting-Started)
 - [Features](#Features)
 - [Future Features](#Future-Features)
 - [Technologies](#Technologies)
 
 ## Introduction
-Reedit-lite is a single-page web application allows users to utilise the Reddit JSON API to access and search through Reddit user data and uploads.
+Reddit-lite is a single-page web application allows users to utilise the Reddit JSON API to access and search through Reddit user data and uploads.
 
 Reddit is a hugely popular website, where users upload text, photos, videos and links which can be discussed and commented on by other users. The site is organised into discreet topical forums which are called subreddits. Subreddit titles are denoted with an 'r/' symbol, eg. 'r/worldnews'. Furthermore, all posts and comments can be up/downvoted, meaning all content can be quickly assess or filtered by its quality and relevance.
 
 Using reddit-lite, it is possible to access a portion of the data uploaded by users onto the reddit servers. By excluding various functionalities available on the official site (eg. posting capabilities, awards, user profiles), reddit-lite provides a more streamlined view of the core content which reddit makes available.
+
+![image](https://user-images.githubusercontent.com/66684013/125090047-d82e6e00-e0c6-11eb-9bce-077e2d9fc932.png)
+
+## Getting Started
+
+Access reddit-lite here: https://simonaus.github.io/reddit-lite/
 
 ## Features
 
